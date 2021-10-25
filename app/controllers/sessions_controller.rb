@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
      def index
-          if session[:user.id]
+          if session[:user_id]
                user = User.find(session[:user_id])
                render json: user
           else
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
                session[:user_id] = user.id
                render json: user
           else 
-               render json: {error: "Invalid"}
+               render json: {message: "Invalid"}
           end
      end
 end

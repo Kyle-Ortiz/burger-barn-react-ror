@@ -1,20 +1,24 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
-function Login() {
+function Login({login}) {
      const [username,setUsername] = useState("")
      const [password,setPassword] = useState("")
 
      function changeHandler(e) {
-          if (e.name == "username") {
+          if (e.target.name === "username") {
                setUsername(e.target.value)
           } else {
                setPassword(e.target.value)
           }
      }
+
+
      return (
           <div>
-               <form action="submit">
+               <form action="submit" onSubmit={(e)=> {
+                    e.preventDefault();
+                    login({username,password})}}>
                     <div>
                          <label htmlFor="username">Username: </label>
                          <input name="username" value={username} onChange={(e)=> changeHandler(e)}type="text" />  
