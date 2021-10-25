@@ -1,8 +1,12 @@
 class SessionsController < ApplicationController
      def index
-          session[:session_hello] ||= "World"
-          cookies[:cookies_hello] ||= "World"
-          render json: { session: session, cookies: cookies.to_hash }
+          if session[:user.id]
+               user = User.find(session[:user_id])
+               render json: user
+          else
+               render json: {message: 'You have not logged in'}
+          end
+          
      end
 
      def create 
