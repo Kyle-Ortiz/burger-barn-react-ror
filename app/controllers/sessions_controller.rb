@@ -11,11 +11,13 @@ class SessionsController < ApplicationController
 
      def create 
           user = User.find_by_username(params[:username])
-          if user.authenticate(params[:password])
-               session[:user_id] = user.id
-               render json: user
+          if user 
+               if user.authenticate(params[:password])
+                    session[:user_id] = user.id
+                    render json: user
+               end
           else 
-               render json: {message: "Invalid"}
+               render json: {message: "Username or password is incorrect"}
           end
      end
 end
