@@ -1,6 +1,15 @@
 import './App.css';
 import {useState,useEffect} from 'react'
 import Login from './components/Login.js'
+import Menu from './components/Menu'
+import Location from './components/Location'
+import Logout from './components/Logout'
+import {
+  Switch,
+  Route
+} from "react-router-dom";
+import Navbar from './components/Navbar.js';
+
 function App() {
   const [user, setUser] = useState(null)
 
@@ -29,8 +38,23 @@ function App() {
     }
 
   return (
-    <div className="App">
-      {user? <h2>Welcome, {user.username}</h2> : <Login login={login}/>}
+    <div className="app">
+      <Navbar user={user} setUser={setUser}/>
+      <Switch>
+          <Route path="/Menu">
+            <Menu />
+          </Route>
+          <Route path="/Location">
+            <Location />
+          </Route>
+          <Route path="/Login">
+            <Login login={login}/>
+          </Route>
+          <Route path="/Logout">
+            <Logout />
+          </Route>
+        </Switch>
+      {/* {user? <h2>Welcome, {user.username}</h2> : <Login login={login}/>} */}
     </div>
   );
 }

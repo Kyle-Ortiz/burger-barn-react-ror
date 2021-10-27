@@ -20,4 +20,9 @@ class SessionsController < ApplicationController
                render json: {message: "Username or password is incorrect"}
           end
      end
+
+     def destroy 
+          session.delete :user_id
+          head :no_content
+     end
 end
