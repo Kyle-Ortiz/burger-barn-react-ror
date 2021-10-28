@@ -51,6 +51,24 @@ function App() {
           <Route path="/Login">
             <Login login={login}/>
           </Route>
+          <Route path="/Menu/Appetizers">
+            <Menu />
+          </Route>
+          <Route path="/Menu/Burgers">
+            <Menu />
+          </Route>
+          <Route path="/Menu/Chicken">
+            <Menu />
+          </Route>
+          <Route path="/Menu/Sides">
+            <Menu />
+          </Route>
+          <Route path="/Menu/Drinks">
+            <Menu />
+          </Route>
+          <Route path="/Menu/Dessert">
+            <Menu />
+          </Route>
           <Route path="/">
             <Home />
           </Route>
