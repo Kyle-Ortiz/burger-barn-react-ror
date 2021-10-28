@@ -9,6 +9,7 @@ import {
   Route
 } from "react-router-dom";
 import Navbar from './components/Navbar.js';
+import Home from './components/Home'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -50,8 +51,8 @@ function App() {
           <Route path="/Login">
             <Login login={login}/>
           </Route>
-          <Route path="/Logout">
-            <Logout />
+          <Route path="/">
+            <Home />
           </Route>
         </Switch>
       {/* {user? <h2>Welcome, {user.username}</h2> : <Login login={login}/>} */}
