@@ -11,9 +11,10 @@ function Chicken() {
      function chickenCardGenerator(Chickens) {
           const chickenCards = chickens.map((chicken)=> {
                return <div key={chicken.id} className="bg-blue-200">
-                    <img src="#" alt="Chicken item" />
+                    <img src={chicken.image} alt="Chicken item" />
                     <h3>{chicken.name}</h3>
                     <p>{chicken.description}</p>
+                    <p>{chicken.price}</p>
                     <button>Add to Cart</button>
                </div>
           })

@@ -5,6 +5,7 @@ import Menu from './components/Menu'
 import Location from './components/Location'
 import Logout from './components/Logout'
 import {
+  useHistory,
   Switch,
   Route
 } from "react-router-dom";
@@ -17,10 +18,12 @@ import Sides from './components/Sides'
 import Drinks from './components/Drinks'
 import Dessert from './components/Dessert'
 import Cart from './components/Cart'
+import Signup from './components/Signup'
 
 function App() {
   const [user, setUser] = useState(null)
   const [order,setOrder] = useState([])
+  const history = useHistory()
 
   useEffect(() => {
     fetch("/sessions").then((r)=> r.json()).then((data)=> {
@@ -40,8 +43,10 @@ function App() {
     }).then((r)=> r.json()).then((data)=> {
       if (data.id) {
         setUser(data)
+        history.push("/home")
+        window.alert("Logged in successfully!")
       } else {
-        console.log(data)
+        window.alert("Failed to login! Please try again.");
       }
     })
     }
@@ -65,7 +70,7 @@ function App() {
           <Route path="/burgers">
             <Burger setOrder={setOrder}/>
           </Route>
-          <Route path="/chickens">
+          <Route path="/chicken">
             <Chicken setOrder={setOrder}/>
           </Route>
           <Route path="/sides">
@@ -80,8 +85,11 @@ function App() {
           <Route path="/cart">
             <Cart setOrder={setOrder}/>
           </Route>
+          <Route path="/signup">
+            <Signup/>
+          </Route>
           <Route path="/">
-            <Home />
+            <Home user={user}/>
           </Route>
         </Switch>
       {/* {user? <h2>Welcome, {user.username}</h2> : <Login login={login}/>} */}

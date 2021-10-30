@@ -10,6 +10,7 @@ function Navbar({user,setUser}) {
           fetch("/logout", {
             method: "DELETE",
           }).then(() => setUser(null));
+          history.push("/home")
         }
 
      return (

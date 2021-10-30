@@ -12,12 +12,13 @@ function Appetizer({setOrder}) {
      function AppetizerCardGenerator(Appetizers) {
           const AppetizerCards = Appetizers.map((Appetizer)=> {
                return <div key={Appetizer.id} className="bg-blue-200">
-                    <img src="#" alt="Appetizer item" />
+                    <img src={Appetizer.image} alt="Appetizer item" />
                     <h3>{Appetizer.name}</h3>
                     <p>{Appetizer.description}</p>
+                    <p>{Appetizer.price}</p>
                     <label htmlFor="Quantity">Quantity: </label>
                     <input name="Quantity" type="text" value={quantity} onChange={(e)=> setQuantity(e.target.value)}/>
-                    <button className="bg-gray-400">Add to Cart</button>
+                    <button onClick={(e)=> setQuantity(e.target.value)}className="bg-gray-400">Add to Cart</button>
                </div>
           })
           return AppetizerCards

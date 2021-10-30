@@ -11,9 +11,10 @@ function Sides() {
      function sidesCardGenerator(sides) {
           const SidesCards = sides.map((side)=> {
                return <div key={side.id} className="bg-blue-200">
-                    <img src="#" alt="Sides item" />
+                    <img src={side.image} alt="Sides item" />
                     <h3>{side.name}</h3>
                     <p>{side.description}</p>
+                    <p>{side.price}</p>
                     <button>Add to Cart</button>
                </div>
           })
