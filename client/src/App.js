@@ -10,9 +10,17 @@ import {
 } from "react-router-dom";
 import Navbar from './components/Navbar.js';
 import Home from './components/Home'
+import Burger from './components/Burger'
+import Appetizer from './components/Appetizer'
+import Chicken from './components/Chicken'
+import Sides from './components/Sides'
+import Drinks from './components/Drinks'
+import Dessert from './components/Dessert'
+import Cart from './components/Cart'
 
 function App() {
   const [user, setUser] = useState(null)
+  const [order,setOrder] = useState([])
 
   useEffect(() => {
     fetch("/sessions").then((r)=> r.json()).then((data)=> {
@@ -45,29 +53,32 @@ function App() {
           <Route path="/Menu">
             <Menu />
           </Route>
-          <Route path="/Location">
+          <Route path="/location">
             <Location />
           </Route>
-          <Route path="/Login">
+          <Route path="/login">
             <Login login={login}/>
           </Route>
-          <Route path="/Menu/Appetizers">
-            <Menu />
+          <Route path="/appetizers">
+            <Appetizer setOrder={setOrder}/>
           </Route>
-          <Route path="/Menu/Burgers">
-            <Menu />
+          <Route path="/burgers">
+            <Burger setOrder={setOrder}/>
           </Route>
-          <Route path="/Menu/Chicken">
-            <Menu />
+          <Route path="/chickens">
+            <Chicken setOrder={setOrder}/>
           </Route>
-          <Route path="/Menu/Sides">
-            <Menu />
+          <Route path="/sides">
+            <Sides setOrder={setOrder}/>
           </Route>
-          <Route path="/Menu/Drinks">
-            <Menu />
+          <Route path="/drinks">
+            <Drinks setOrder={setOrder}/>
           </Route>
-          <Route path="/Menu/Dessert">
-            <Menu />
+          <Route path="/desserts">
+            <Dessert setOrder={setOrder}/>
+          </Route>
+          <Route path="/cart">
+            <Cart setOrder={setOrder}/>
           </Route>
           <Route path="/">
             <Home />

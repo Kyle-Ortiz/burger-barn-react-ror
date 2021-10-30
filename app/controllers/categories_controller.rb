@@ -5,6 +5,6 @@ class CategoriesController < ApplicationController
 
      def show
           category = Category.find_by_id(params[:id])
-          render json: category.items
+          render json: category.items.to_json(except: [:created_at, :updated_at])
      end
 end

@@ -15,7 +15,7 @@ function Login({login}) {
 
 
      return (
-          <div>
+          <div className="bg-gray-300 flex items-center">
                <form action="submit" onSubmit={(e)=> {
                     e.preventDefault();
                     login({username,password})}}>
