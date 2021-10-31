@@ -1,7 +1,7 @@
 import React from 'react'
 import {useEffect,useState} from 'react'
 
-function Sides() {
+function Sides({cartHandler}) {
      const [sides,setSides] = useState(null)
 
      useEffect(()=> {
@@ -15,7 +15,7 @@ function Sides() {
                     <h3>{side.name}</h3>
                     <p>{side.description}</p>
                     <p>{side.price}</p>
-                    <button>Add to Cart</button>
+                    <button onClick={()=> cartHandler(side)} className="bg-gray-400 border rounded-lg px-2">Add to Cart</button>
                </div>
           })
           return SidesCards

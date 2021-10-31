@@ -15,6 +15,8 @@ class SessionsController < ApplicationController
                if user.authenticate(params[:password])
                     session[:user_id] = user.id
                     render json: user
+               else 
+                    render json: {message: 'Username or password incorrect'}
                end
           else 
                render json: {message: "Username or password is incorrect"}

@@ -22,7 +22,7 @@ import Signup from './components/Signup'
 
 function App() {
   const [user, setUser] = useState(null)
-  const [order,setOrder] = useState([])
+  const [order,setOrder] = useState({})
   const history = useHistory()
 
   useEffect(() => {
@@ -32,6 +32,14 @@ function App() {
       }
     })
   }, []);
+
+  function cartHandler(item) {
+    if (order[item.name]) {
+         setOrder({...order, [item.name]: order[item.name]+= 1})
+    } else {
+         setOrder({...order, [item.name]: order[item.name]= 1})
+    }
+}
 
   function login({username,password}) {
     fetch("/sessions", {
@@ -53,7 +61,7 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar user={user} setUser={setUser}/>
+      <Navbar user={user} setUser={setUser} order={order}/>
       <Switch>
           <Route path="/Menu">
             <Menu />
@@ -65,25 +73,25 @@ function App() {
             <Login login={login}/>
           </Route>
           <Route path="/appetizers">
-            <Appetizer setOrder={setOrder}/>
+            <Appetizer cartHandler={cartHandler}/>
           </Route>
           <Route path="/burgers">
-            <Burger setOrder={setOrder}/>
+            <Burger cartHandler={cartHandler}/>
           </Route>
           <Route path="/chicken">
-            <Chicken setOrder={setOrder}/>
+            <Chicken cartHandler={cartHandler}/>
           </Route>
           <Route path="/sides">
-            <Sides setOrder={setOrder}/>
+            <Sides cartHandler={cartHandler}/>
           </Route>
           <Route path="/drinks">
-            <Drinks setOrder={setOrder}/>
+            <Drinks cartHandler={cartHandler}/>
           </Route>
           <Route path="/desserts">
-            <Dessert setOrder={setOrder}/>
+            <Dessert cartHandler={cartHandler}/>
           </Route>
           <Route path="/cart">
-            <Cart setOrder={setOrder}/>
+            <Cart order={order}setOrder={setOrder} user={user}/>
           </Route>
           <Route path="/signup">
             <Signup/>

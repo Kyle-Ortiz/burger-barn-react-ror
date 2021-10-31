@@ -1,11 +1,13 @@
 import React from 'react'
+import {useEffect} from 'react'
+function Cart({order,user}) {
 
-function Cart() {
-     
+
+
      return (
           <div>
                <h2>Your Order</h2>
-               
+              
           </div>
      )
 }

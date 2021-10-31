@@ -2,7 +2,7 @@ import React from 'react'
 import {Link,useHistory} from "react-router-dom";
 import {GiShoppingBag} from "react-icons/gi"
 
-function Navbar({user,setUser}) {
+function Navbar({user,setUser,order}) {
 
      const history = useHistory();
 
@@ -24,10 +24,22 @@ function Navbar({user,setUser}) {
                               <h1 className="">Menu</h1>
                          </Link>
                     </div>
-                         <Link to="/location">Location</Link>
+                         {/* <Link to="/location">Location</Link> */}
                          {user ? <button onClick={()=> handleLogout()}>Log Out</button> : <Link to="/Login">Login</Link>}
                </div>
-               <div onClick={()=> history.push("/cart")}className="">
+               <div onClick={()=> {
+                    history.push("/cart")
+                    fetch("/orders",{
+                         method: 'POST',
+                         headers: {
+                           'Content-Type': 'application/json',
+                         },
+                         body: JSON.stringify({
+                              "order_hash": order,
+                              "user_id" : user.id,
+                         }),
+                       }).then((r) => {r.json()}).then((data)=> console.log(data))
+                    }}className="cursor-pointer">
                    <GiShoppingBag size={28}/>
                </div>
           </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {useEffect,useState} from 'react'
 
-function Dessert() {
+function Dessert({cartHandler}) {
      const [desserts,setDesserts] = useState(null)
 
      useEffect(()=> {
@@ -15,7 +15,7 @@ function Dessert() {
                     <h3>{dessert.name}</h3>
                     <p>{dessert.description}</p>
                     <p>{dessert.price}</p>
-                    <button>Add to Cart</button>
+                    <button onClick={()=> cartHandler(dessert)} className="bg-gray-400 border rounded-lg px-2">Add to Cart</button>
                </div>
           })
           return dessertCards
