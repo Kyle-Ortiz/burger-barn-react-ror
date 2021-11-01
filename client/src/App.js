@@ -3,7 +3,6 @@ import {useState,useEffect} from 'react'
 import Login from './components/Login.js'
 import Menu from './components/Menu'
 import Location from './components/Location'
-import Logout from './components/Logout'
 import {
   useHistory,
   Switch,
@@ -40,6 +39,14 @@ function App() {
     } else {
          setOrder({...order, [item.name]: order[item.name]= 1})
     }
+    fetch("orders",{
+      method: 'POST',
+      headers:{
+        "Content-Type": 'application/json'},
+      body: JSON.stringify({
+        "order_hash": order,
+      user_id: user.id})
+    }).then((r) => r.json()).then((data)=> console.log(data))
 }
 
   function login({username,password}) {
@@ -92,14 +99,14 @@ function App() {
             <Dessert cartHandler={cartHandler}/>
           </Route>
           <Route path="/cart">
-            <Cart order={order}setOrder={setOrder} user={user}/>
+            <Cart user={user}/>
           </Route>
           <Route path="/signup">
             <Signup/>
           </Route>
           <Route path="/account">
-            {user ? <Account user={user}/>:  <Login login={login}/>}
-            
+          <Account user={user}/>:
+            {/* {user ? <Account user={user}/>:  <Login login={login}/>} */}
           </Route>
           <Route path="/">
             <Home user={user}/>

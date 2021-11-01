@@ -10,9 +10,10 @@ class UsersController < ApplicationController
      end
 
      def update
+          byebug
           user = User.find(params[:user_id])
-          user.Update!(password: params[:new_assword])
+          user.update!(password: params[:new_password])
 
-          render :json => user, status: :updated
+          render json: user, status: :ok
      end
 end

@@ -34,16 +34,6 @@ function Navbar({user,setUser,order}) {
                </div>
                <div onClick={()=> {
                     history.push("/cart")
-                    fetch("/orders",{
-                         method: 'POST',
-                         headers: {
-                           'Content-Type': 'application/json',
-                         },
-                         body: JSON.stringify({
-                              "order_hash": order,
-                              "user_id" : user.id,
-                         }),
-                       }).then((r) => {r.json()}).then((data)=> console.log(data))
                     }}className="cursor-pointer">
                    <GiShoppingBag size={28}/>
                </div>
