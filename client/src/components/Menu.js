@@ -13,7 +13,7 @@ function Menu() {
 
      function cardsGenerator(categories) {
           const categoryCards = categories.map((category)=> {
-               return <div key={category.id} className="flex flex-col justify-center w-1/3 pt-40 ">
+               return <div key={category.id} className="flex flex-col justify-center w-1/3 pt-40">
                     <img src={category.images} alt="food" />
                     <Link to={category.name}className="bg-blue-400">{category.name}
                     </Link>

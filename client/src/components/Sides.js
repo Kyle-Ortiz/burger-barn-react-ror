@@ -10,7 +10,7 @@ function Sides({cartHandler}) {
 
      function sidesCardGenerator(sides) {
           const SidesCards = sides.map((side)=> {
-               return <div key={side.id} className="bg-blue-200">
+               return <div key={side.id} className="bg-blue-200 border border-black w-96 mx-3 my-3">
                     <img src={side.image} alt="Sides item" />
                     <h3>{side.name}</h3>
                     <p>{side.description}</p>

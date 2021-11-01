@@ -19,6 +19,7 @@ import Drinks from './components/Drinks'
 import Dessert from './components/Dessert'
 import Cart from './components/Cart'
 import Signup from './components/Signup'
+import Account from './components/Account'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -60,7 +61,7 @@ function App() {
     }
 
   return (
-    <div className="app">
+    <div className="bg-gray-600">
       <Navbar user={user} setUser={setUser} order={order}/>
       <Switch>
           <Route path="/Menu">
@@ -95,6 +96,10 @@ function App() {
           </Route>
           <Route path="/signup">
             <Signup/>
+          </Route>
+          <Route path="/account">
+            {user ? <Account user={user}/>:  <Login login={login}/>}
+            
           </Route>
           <Route path="/">
             <Home user={user}/>

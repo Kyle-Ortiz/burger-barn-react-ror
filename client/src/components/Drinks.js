@@ -10,7 +10,7 @@ function Drinks({cartHandler}) {
 
      function drinksCardGenerator(drinks) {
           const drinksCards = drinks.map((drink)=> {
-               return <div key={drink.id} className="bg-blue-200">
+               return <div key={drink.id} className="bg-blue-200 border border-black w-96 mx-3 my-3">
                     <img src={drink.image} alt="Drink item" />
                     <h3>{drink.name}</h3>
                     <p>{drink.description}</p>

@@ -10,7 +10,7 @@ function Dessert({cartHandler}) {
 
      function dessertCardGenerator(desserts) {
           const dessertCards = desserts.map((dessert)=> {
-               return <div key={dessert.id} className="bg-blue-200">
+               return <div key={dessert.id} className="bg-blue-200 border border-black w-96 mx-3 my-3">
                     <img src={dessert.image} alt="Dessert item" />
                     <h3>{dessert.name}</h3>
                     <p>{dessert.description}</p>

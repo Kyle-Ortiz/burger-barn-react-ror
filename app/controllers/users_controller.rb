@@ -8,4 +8,11 @@ class UsersController < ApplicationController
                return render :json => user, status: :created
           end
      end
+
+     def update
+          user = User.find(params[:user_id])
+          user.Update!(password: params[:new_assword])
+
+          render :json => user, status: :updated
+     end
 end

@@ -10,7 +10,7 @@ function Burger({cartHandler}) {
 
      function burgerCardGenerator(burgers) {
           const BurgerCards = burgers.map((burger)=> {
-               return <div key={burger.id} className="bg-blue-200">
+               return <div key={burger.id} className="bg-blue-200 border border-black w-96 mx-3 my-3">
                     <img src={burger.image} alt="burger item" />
                     <h3>{burger.name}</h3>
                     <p>{burger.description}</p>

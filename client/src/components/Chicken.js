@@ -10,7 +10,7 @@ function Chicken({cartHandler}) {
 
      function chickenCardGenerator(chickens) {
           const chickenCards = chickens.map((chicken)=> {
-               return <div key={chicken.id} className="bg-blue-200">
+               return <div key={chicken.id} className="bg-blue-200 border border-black w-96 mx-3 my-3">
                     <img src={chicken.image} alt="Chicken item" />
                     <h3>{chicken.name}</h3>
                     <p>{chicken.description}</p>
