@@ -10,7 +10,9 @@ class OrdersController < ApplicationController
      end
 
      def update
-
+          order = Order.find(params[:id])
+          order.update!(is_complete: true)
+          render json: order.to_json(except: [:created_at, :updated_at]), status: :ok
      end
 
      def create

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :items
   resources :categories
   resources :sessions, only: [:index, :create]
-  resources :orders, only: [:show,:create,:destroy]
+  resources :orders, only: [:show,:create,:update,:destroy]
   resources :users, only: [:create,:update,:destroy]
   delete "/logout", to: "sessions#destroy"
   # Routing logic: fallback requests for React Router.
