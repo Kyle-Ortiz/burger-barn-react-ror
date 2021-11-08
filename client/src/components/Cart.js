@@ -6,13 +6,13 @@ function Cart({user}) {
      useEffect(() => {
           if (user) {
           fetch(`/orders/${user.id}`).then((r)=> r.json()).then((order)=> {
-               console.log(order.order_hash)
-               if (order.order_hash) {
+               console.log(order)
+               if (order[0].order_hash) {
                setCart(order[0].order_hash)
                setOrderId(order[0].id)
                }
           })}
-     },[])
+     },[user])
      
      function orderPlacer() {
           fetch(`/orders/${orderId}`, {

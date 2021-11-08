@@ -105,7 +105,8 @@ function App() {
             <Signup/>
           </Route>
           <Route path="/account">
-          <Account user={user}/>:
+            {user ? <Account user={user}/> : <Login login={login}/>}
+          
             {/* {user ? <Account user={user}/>:  <Login login={login}/>} */}
           </Route>
           <Route path="/">
