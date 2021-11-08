@@ -68,7 +68,7 @@ function App() {
     }
 
   return (
-    <div className="bg-gray-600">
+    <div className="main-container">
       <Navbar user={user} setUser={setUser} order={order}/>
       <Switch>
           <Route path="/Menu">

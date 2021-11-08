@@ -16,20 +16,20 @@ function Login({login,user}) {
 
 
      return (
-          <div className="bg-gray-300 flex items-center">
+          <div className="login-signup">
                <form action="submit" onSubmit={(e)=> {
                     e.preventDefault();
                     login({username,password})
                     }}>
-                    <div>
+                    <div className="form-group">
                          <label htmlFor="username">Username: </label>
                          <input name="username" value={username} onChange={(e)=> changeHandler(e)}type="text" />  
                     </div>
-                    <div>
-                         <label htmlFor="password">Password: </label>
+                    <div className="form-group-2">
+                         <label htmlFor="password">Password:  </label>
                          <input name="password" value={password} onChange={(e)=> changeHandler(e)} type="password" />
                     </div>
-                    <input type="submit" value="Login"/>
+                    <input id="log-btn"type="submit" value="Login"/>
                </form>
           </div>
      )

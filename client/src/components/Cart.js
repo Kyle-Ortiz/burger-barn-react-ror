@@ -4,11 +4,14 @@ function Cart({user}) {
      const [cart,setCart] = useState(null)
      const [orderId, setOrderId] = useState(null)
      useEffect(() => {
+          if (user) {
           fetch(`/orders/${user.id}`).then((r)=> r.json()).then((order)=> {
-               console.log(order)
+               console.log(order.order_hash)
+               if (order.order_hash) {
                setCart(order[0].order_hash)
                setOrderId(order[0].id)
-          })
+               }
+          })}
      },[])
      
      function orderPlacer() {
@@ -35,7 +38,7 @@ function Cart({user}) {
      return (
           <div className="flex flex-col bg-gray-400">
                <h2 className="pb-4">Your Order</h2>
-               <div>{cart ? itemGenerator(cart) : "Loading..."}</div>
+               <div>{cart ? itemGenerator(cart) : "Loading... Check to see if you are logged in or have an active order!"}</div>
               <button onClick={()=> orderPlacer()}> Place Order!</button>
           </div>
      )
