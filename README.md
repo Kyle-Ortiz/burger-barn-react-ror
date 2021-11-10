@@ -1,9 +1,8 @@
-# Project Template: React/Rails API
+# Phase 4 Project - Burger Barn Order Placement
 
 ## Description
-
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Heroku.
+Burger Barn is a fake restuarant web page that allows users to sign up/ login in order to place orders. 
+Users can view the menu, add items to their cart, place orders, update their passwords, and delete their account if they wish to no longer "do business" with burger barn. 
 
 ## Requirements
 
