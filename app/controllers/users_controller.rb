@@ -19,6 +19,6 @@ class UsersController < ApplicationController
      def destroy
           user = User.find(params[:id]).destroy
           session.delete :user_id
-          render json: user, status: :ok
+          render json: user.to_json(only: [:username]), status: :ok
      end
 end
