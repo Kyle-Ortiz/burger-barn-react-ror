@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 
-function Account({user}) {
+function Account({user, setUser}) {
      const [passwordSwap, setPasswordSwap] = useState(false)
      const [newPassword, setNewPassword] = useState("")
      const [success, setSuccess] = useState(false)
@@ -24,6 +24,17 @@ function Account({user}) {
                setSuccess(true)
           })
      }
+
+     function removeAccount(e) {
+          e.preventDefault();
+          fetch(`/users/${user.id}`, {
+               method: 'DELETE',
+               headers: {'Content-Type': 'application/json'}
+          }).then((r)=> r.json()).then((deletedUser) => {
+               setUser(null)
+               console.log(deletedUser)
+          })
+     }
      return (
           <div>
               <h2>Account info</h2>
@@ -31,6 +42,9 @@ function Account({user}) {
                    <p>Username: {user.username}</p>
                    <p>Date joined: {user.created_at}</p>
               </div>
+               <div>
+                    <button onClick={(e)=> removeAccount(e)}>Delete Account</button>
+               </div>
               <div>
                    <button className="border rounded-lg bg-white" onClick={()=>stateHandler()}>Change Password</button>
               </div>

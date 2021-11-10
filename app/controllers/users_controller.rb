@@ -15,4 +15,10 @@ class UsersController < ApplicationController
 
           render json: user, status: :ok
      end
+
+     def destroy
+          user = User.find(params[:id]).destroy
+          session.delete :user_id
+          render json: user, status: :ok
+     end
 end
