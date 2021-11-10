@@ -2,9 +2,10 @@ import React from 'react'
 import {useState} from 'react'
 
 function Account({user}) {
-     const [passwordSwap, setPasswordSwap] = useState(true)
+     const [passwordSwap, setPasswordSwap] = useState(false)
      const [newPassword, setNewPassword] = useState("")
-
+     const [success, setSuccess] = useState(false)
+     //changing password 
      function stateHandler() {
           setPasswordSwap(!passwordSwap)
      }
@@ -20,7 +21,7 @@ function Account({user}) {
                body: JSON.stringify(changeObject),
 
           }).then((r)=> r.json()).then((response)=>{
-               console.log(response)
+               setSuccess(true)
           })
      }
      return (
@@ -41,6 +42,7 @@ function Account({user}) {
                         <input type="submit" onSubmit={newPassHandler}/>
                    </form>
                </div>: null}
+               {success ? <h1>Password Changed Successfully, try logging back in!</h1> : null}
           </div>
      )
 }

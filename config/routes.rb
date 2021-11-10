@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :items
-  resources :categories
+  resources :items, only: [:index]
+  resources :categories, only: [:index, :show]
   resources :sessions, only: [:index, :create]
   resources :orders, only: [:show,:create,:update,:destroy]
   resources :users, only: [:create,:update,:destroy]

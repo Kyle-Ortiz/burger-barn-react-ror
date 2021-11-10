@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 function Menu() {
      const[categories,setCategories]= useState(null)
-
+     //fetch all categories then map over them to display them
      useEffect(() => {
           fetch("/categories").then((r)=> r.json()).then((data)=> {
                setCategories(data)

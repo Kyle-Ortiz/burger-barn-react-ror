@@ -25,6 +25,7 @@ function App() {
   const [order,setOrder] = useState({})
   const history = useHistory()
 
+  //fetch to backend on page load to check if user is logged in
   useEffect(() => {
     fetch("/sessions").then((r)=> r.json()).then((data)=> {
       if(data.id) {
@@ -32,7 +33,7 @@ function App() {
       }
     })
   }, []);
-
+ //adds or increments quantity for items in cart so that this can be send to backend
   function cartHandler(item) {
     if (order[item.name]) {
          setOrder({...order, [item.name]: order[item.name]+= 1})
@@ -48,7 +49,7 @@ function App() {
       user_id: user.id})
     }).then((r) => r.json()).then((data)=> console.log(data))
 }
-
+//login function for allowing people to login 
   function login({username,password}) {
     fetch("/sessions", {
       method: "POST",
@@ -66,7 +67,7 @@ function App() {
       }
     })
     }
-
+//app return with different routes for each page
   return (
     <div className="main-container">
       <Navbar user={user} setUser={setUser} order={order}/>
@@ -99,7 +100,7 @@ function App() {
             <Dessert cartHandler={cartHandler}/>
           </Route>
           <Route path="/cart">
-            <Cart user={user}/>
+            <Cart user={user} order={order} setOrder={setOrder}/>
           </Route>
           <Route path="/signup">
             <Signup/>

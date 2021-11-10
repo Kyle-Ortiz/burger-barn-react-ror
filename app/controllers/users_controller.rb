@@ -10,7 +10,6 @@ class UsersController < ApplicationController
      end
 
      def update
-          byebug
           user = User.find(params[:user_id])
           user.update!(password: params[:new_password])
 

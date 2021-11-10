@@ -20,10 +20,12 @@ function Signup() {
                },
                body: JSON.stringify(newUser),
              }).then((res) => res.json()).then((response)=> {
+                  console.log(response)
                     if (response.status === 422 ) {
                        const errors = response.exception
                          window.alert(errors)
                     }  else if (response.username) {
+                         console.log(response)
                          window.alert('User Created! Proceed to login')
                     } else if(response.status) {
                        window.alert("Something has gone wrong, please try again later")
